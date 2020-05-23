@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import appColors from "./colors";
-import CardCreation from "./components/flashcard/CardCreation";
-import DeckCreation from "./components/deck/DeckCreation";
 import DeckList from "./components/deck/DeckList";
 import Button from "./components/Button";
 import DialogInput from "react-native-dialog-input";
@@ -47,7 +45,8 @@ export default class App extends Component {
     />;
   };
   render() {
-    return (
+    //if decks are empty show empty message
+     return (
       <View style={styles.container}>
         <DeckList data={this.getData()} />
         <Button
@@ -56,7 +55,7 @@ export default class App extends Component {
         />
         {this.renderDialog()}
       </View>
-    );
+    ); 
   }
 }
 
