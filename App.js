@@ -24,31 +24,37 @@ export default class App extends Component {
     { id: 12, title: "Deck 13", cards: [{}, {}] },
   ];
   state = {
-    isAddDeck: true,
+    showDeckCreationDialog: false,
   };
   onAddDeck = (text) => {
-    //todo add this text as deck to stoarage 
-    //then show loading 
+    //todo add this text as deck to stoarage
+    //then show loading
     //then add to state and dismiss dialog
-    this.setState({isAddDeck:false})
+    this.setState({ showDeckCreationDialog: false });
+  };
+  renderDialog = () => {
+    return <DialogInput
+      isDialogVisible={this.state.showDeckCreationDialog}
+      title={"Add Deck"}
+      message={"Name your new deck"}
+      hintInput={"Deck name..."}
+      submitInput={(inputText) => {
+        this.onAddDeck(inputText);
+      }}
+      closeDialog={() => {
+        this.setState({ showDeckCreationDialog: false });
+      }}
+    />;
   };
   render() {
     return (
       <View style={styles.container}>
         <DeckList data={this.getData()} />
-        <Button text="Add Deck"  onPress={()=>this.setState({isAddDeck:true})}/>
-        <DialogInput
-          isDialogVisible={this.state.isAddDeck}
-          title={"Add Deck"}
-          message={"Name your new deck"}
-          hintInput={"Deck name..."}
-          submitInput={(inputText) => {
-            this.onAddDeck(inputText);
-          }}
-          closeDialog={() => {
-            this.setState({isAddDeck:false});
-          }}
+        <Button
+          text="Add Deck"
+          onPress={() => this.setState({ showDeckCreationDialog: true })}
         />
+        {this.renderDialog()}
       </View>
     );
   }
