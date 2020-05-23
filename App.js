@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import {backgroundColor,primaryColor} from "./colors";
-import CardQuiz from "./components/flashcard/CardQuiz"
-import CardAnswer from "./components/flashcard/CardAnswer"
+import CardQuiz from "./components/flashcard/CardQuestion"
+import DeckPage from "./components/deck/DeckPage"
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <CardQuiz quizText="Also, your function does not work as the challenge wants, because you ... answer which is a blank string, so your function will always return th"/>
+      <DeckPage/>
     </View>
   );
 }

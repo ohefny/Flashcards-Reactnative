@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import appColors from "../../colors";
 import Button from "../Button";
-export default function CardQuiz({onShowAnswer,quizText}) {
+export default function CardQuestion({onShowAnswer,quizText}) {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     shadowColor: appColors.lightPrimaryColor,
     minHeight: 100,
+    width: 300,
     padding: 20,
     margin: 30,
     alignContent: "center",
