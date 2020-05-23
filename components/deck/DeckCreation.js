@@ -1,13 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import appColors from "../../colors";
+import { Container, Content, Input, Form, Item, Label } from "native-base";
+import Button from "../Button";
 
-export default class DeckCreation extends React {
+export default class DeckCreation extends Component {
+  addDeck = () => {
+    //get text from this.state.quizText , this.state.answerText
+  };
   render() {
     return (
-      <View style={styles.container}>
-        <Text>DeckCreation</Text>
-      </View>
+      <Container>
+        <Content padder>
+          <Form>
+            <Item floatingLabel>
+              <Label>Deck Name</Label>
+              <Input />
+            </Item>
+          </Form>
+          <Button text="Create Deck" />
+        </Content>
+      </Container>
     );
   }
 }
@@ -16,7 +29,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center",
   },
 });

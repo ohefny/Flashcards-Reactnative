@@ -1,23 +1,64 @@
-import React from "react";
+import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import {backgroundColor,primaryColor} from "./colors";
-import CardQuiz from "./components/flashcard/CardQuestion"
-import DeckPage from "./components/deck/DeckPage"
+import appColors from "./colors";
+import CardCreation from "./components/flashcard/CardCreation";
+import DeckCreation from "./components/deck/DeckCreation";
+import DeckList from "./components/deck/DeckList";
+import Button from "./components/Button";
+import DialogInput from "react-native-dialog-input";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <DeckPage/>
-    </View>
-  );
+export default class App extends Component {
+  getData = () => [
+    { id: 1, title: "Deck 1", cards: [{}, {}] },
+    { id: 2, title: "Deck 2", cards: [{}, {}] },
+    { id: 3, title: "Deck 3", cards: [{}, {}] },
+    { id: 4, title: "Deck 4", cards: [{}, {}] },
+    { id: 5, title: "Deck 5", cards: [{}, {}] },
+    { id: 6, title: "Deck 6", cards: [{}, {}] },
+    { id: 7, title: "Deck 7", cards: [{}, {}] },
+    { id: 8, title: "Deck 8", cards: [{}, {}] },
+    { id: 9, title: "Deck 9", cards: [{}, {}] },
+    { id: 10, title: "Deck 10", cards: [{}, {}] },
+    { id: 11, title: "Deck 11", cards: [{}, {}] },
+    { id: 12, title: "Deck 12", cards: [{}, {}] },
+    { id: 12, title: "Deck 13", cards: [{}, {}] },
+  ];
+  state = {
+    isAddDeck: true,
+  };
+  onAddDeck = (text) => {
+    //todo add this text as deck to stoarage 
+    //then show loading 
+    //then add to state and dismiss dialog
+    this.setState({isAddDeck:false})
+  };
+  render() {
+    return (
+      <View style={styles.container}>
+        <DeckList data={this.getData()} />
+        <Button text="Add Deck"  onPress={()=>this.setState({isAddDeck:true})}/>
+        <DialogInput
+          isDialogVisible={this.state.isAddDeck}
+          title={"Add Deck"}
+          message={"Name your new deck"}
+          hintInput={"Deck name..."}
+          submitInput={(inputText) => {
+            this.onAddDeck(inputText);
+          }}
+          closeDialog={() => {
+            this.setState({isAddDeck:false});
+          }}
+        />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: backgroundColor,
-    color: primaryColor,
-    alignItems: "center",
+    backgroundColor: appColors.backgroundColor,
+    alignItems: "stretch",
     justifyContent: "center",
   },
 });

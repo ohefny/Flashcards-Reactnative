@@ -8,10 +8,26 @@ const SHOWING_QUIZ = 1;
 const SHOWING_ANSWER = 2;
 
 export default class DeckPage extends Component {
-  onQuizStarPressed = () => {};
-  onAddCardPressed = () => {};
+  onCorrectPressed = () => {
+    //todo add result to stats on storage / load next quiz from storage
+    this.setState({
+      deckState: SHOWING_QUIZ,
+      currentQuestionIndex: this.state.currentQuestionIndex + 1,
+    });
+  };
+  onInCorrectPressed = () => {
+    //todo add result to stats on storage / load next quiz from storage
+    this.setState({
+      deckState: SHOWING_QUIZ,
+      currentQuestionIndex: this.state.currentQuestionIndex + 1,
+    });
+  };
+  onShowAnswerPressed = () => {
+    //todo load answer from storage
+    this.setState({ deckState: SHOWING_ANSWER });
+  };
   state = {
-    deckState: SHOWING_DETAILS,
+    deckState: SHOWING_QUIZ,
     currentQuestionIndex: 0,
   };
   render() {
