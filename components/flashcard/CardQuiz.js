@@ -1,21 +1,51 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
-
-export default class CardQuiz extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Card Quiz</Text>
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
+import appColors from "../../colors";
+import Button from "../Button";
+export default function CardQuiz({onShowAnswer,quizText}) {
+  return (
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.cardText}>{quizText}</Text>
       </View>
-    );
-  }
+      <Button
+        text="Show Answer"
+        onPress={onShowAnswer}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: appColors.backgroundColor,
     alignItems: "center",
     justifyContent: "center",
+  },
+  showAnswerButton: {
+    backgroundColor: appColors.accentColor,
+    color: appColors.whiteTextColor,
+  },
+  card: {
+    backgroundColor: appColors.primaryColor,
+    borderColor: appColors.darkPrimaryColor,
+    borderRadius: 8,
+    borderWidth: 2,
+    shadowColor: appColors.lightPrimaryColor,
+    minHeight: 100,
+    padding: 20,
+    margin: 30,
+    alignContent: "center",
+  },
+  cardText: {
+    color: appColors.whiteTextColor,
+    fontSize: 16,
   },
 });

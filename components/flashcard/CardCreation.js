@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import appColors from "../../colors";
 
 export default class CardCreation extends Component {
   render() {

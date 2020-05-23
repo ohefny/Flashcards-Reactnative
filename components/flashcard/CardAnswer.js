@@ -1,21 +1,58 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
-
-export default class CardAnswer extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>CardAnswer</Text>
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
+import appColors from "../../colors";
+import Button from "../Button";
+export default function CardAnswer({ onCorrect, onInCorrect, answerText }) {
+  return (
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.cardText}>{answerText}</Text>
       </View>
-    );
-  }
+      <Button style={styles.actionButton}
+        text="Correct"
+        onPress={onCorrect}
+        textStyle={{color:appColors.whiteTextColor}}
+        btnStyle={{backgroundColor:appColors.correctColor,...styles.actionButton}}
+      />
+      <Button style={styles.actionButton}
+        text="InCorrect"
+        onPress={onInCorrect}
+        textStyle={{color:appColors.whiteTextColor}}
+        btnStyle={{backgroundColor:appColors.incorrectColor,...styles.actionButton}}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: appColors.backgroundColor,
     alignItems: "center",
     justifyContent: "center",
+  },
+  actionButton: {
+    margin: 10,
+    width: 200
+  },
+  card: {
+    backgroundColor: appColors.whiteTextColor,
+    borderColor: appColors.darkPrimaryColor,
+    borderRadius: 8,
+    borderWidth: 2,
+    minHeight: 100,
+    padding: 20,
+    margin: 30,
+    alignContent: "center",
+  },
+  cardText: {
+    color: appColors.text,
+    fontSize: 16,
   },
 });
