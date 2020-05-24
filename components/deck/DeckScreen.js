@@ -2,25 +2,31 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import appColors from "../../colors";
 import Button from "../Button";
-
-export default class DeckScreen extends Component {
-/*   static navigationOptions = ({ navigation }) => ({
+import { connect } from "react-redux";
+import { getCardsOfDeck } from "../../utils";
+class DeckScreen extends Component {
+  /*   static navigationOptions = ({ navigation }) => ({
     results: `${navigation.state.params.user.results}`,
   }); */
   onQuizStarPressed = () => {
-    this.props.navigation.navigate('Deck Practice',{id:this.props.route.params.id})
+    this.props.navigation.navigate("Deck Practice", {
+      id: this.props.deck.id,
+    });
   };
   onAddCardPressed = () => {
-    this.props.navigation.navigate('Card Creation',{id:this.props.route.params.id})
+    this.props.navigation.navigate("Card Creation", {
+      id: this.props.deck.id,
+    });
   };
   state = {};
   render() {
     //todo show if Last Result number of Practices > 0
     const deckInfo = {
-      creationDate: "20/2/2020",
-      cardsNumber: 3,
-      lastResult: this.props.route.params.results,
-      numberOfPractices: 2,
+      title:this.props.deck.title,
+      creationDate: this.props.deck.creationDate,
+      cardsNumber: this.props.cards.length,
+      /* lastResult: this.props.deck.id,
+      numberOfPractices: 2, */
     };
     return (
       <DeckDetails
@@ -33,6 +39,7 @@ export default class DeckScreen extends Component {
 }
 function DeckDetails(props) {
   const {
+    title,
     creationDate,
     cardsNumber,
     lastResult,
@@ -40,16 +47,16 @@ function DeckDetails(props) {
   } = props.deckInfo;
   return (
     <View style={styles.deckInfoContainer}>
-      <Text style={styles.titleStyle}>Deck Name</Text>
+      <Text style={styles.titleStyle}>{title}</Text>
       <View>
         <Text style={styles.detailsStyle}>Created At: {creationDate}</Text>
         <Text style={styles.detailsStyle}>Contained Cards: {cardsNumber}</Text>
-        <Text style={styles.detailsStyle}>
+        {/* <Text style={styles.detailsStyle}>
           Number of Practices: {numberOfPractices}
         </Text>
         {numberOfPractices > 0 ? (
           <Text style={styles.detailsStyle}>Last Result: {lastResult}%</Text>
-        ) : null}
+        ) : null} */}
       </View>
       <View style={{ flexDirection: "row", alignContent: "space-around" }}>
         <Button
@@ -81,3 +88,11 @@ const styles = StyleSheet.create({
   },
 });
 //todo connect this component to redux
+function mapStateToProps({ decks, cards }, { route }) {
+  return {
+    deck: decks[route.params.id],
+    cards: getCardsOfDeck(route.params.id, cards),
+  };
+}
+
+export default connect(mapStateToProps)(DeckScreen);

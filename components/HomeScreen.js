@@ -23,7 +23,7 @@ class HomeScreen extends Component {
     }
   }
   navigateToDeckDetails = (id) => {
-    this.props.navigation.navigate("Deck Details", { results: 77, id });
+    this.props.navigation.navigate("Deck Details", { id });
   };
   onAddDeck = (text) => {
     //todo add this text as deck to storage
