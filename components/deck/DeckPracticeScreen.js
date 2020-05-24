@@ -12,6 +12,12 @@ const SHOWING_QUIZ = 1;
 const SHOWING_ANSWER = 2;
 const SHOWING_RESULT = 3;
 class DeckPracticeScreen extends Component {
+  state = {
+    deckState: SHOWING_QUIZ,
+    correct: 0,
+    incorrect: 0,
+    cardIndex: 0,
+  };
   resetState = () => {
     this.setState({
       deckState: SHOWING_QUIZ,
@@ -42,12 +48,7 @@ class DeckPracticeScreen extends Component {
     //todo load answer from storage
     this.setState({ deckState: SHOWING_ANSWER });
   };
-  state = {
-    deckState: SHOWING_QUIZ,
-    correct: 0,
-    incorrect: 0,
-    cardIndex: 0,
-  };
+  
 
   renderQuizState = () => {
     const progress =
