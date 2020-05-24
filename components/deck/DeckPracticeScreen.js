@@ -73,6 +73,7 @@ class DeckPracticeScreen extends Component {
           correctAnswersCount={this.state.correct}
           incorrectAnswersCount={this.state.incorrect}
           onRetakePressed={() => this.resetState()}
+          onGoBack={()=>this.props.navigation.goBack()}
         />
       );
   };
