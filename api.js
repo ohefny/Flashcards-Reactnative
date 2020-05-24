@@ -26,7 +26,7 @@ export function fetchCards() {
 export function insertCard(card) {
   //{id,answer,question,deckID}
   return AsyncStorage.getItem(CARDS_STORAGE_KEY).then((cards) => {
-    initCards = cards == null ? {} : JSON.parse(cards);
+    const initCards = cards == null ? {} : JSON.parse(cards);
     initCards[card.id] = card;
     AsyncStorage.setItem(CARDS_STORAGE_KEY, JSON.stringify(initCards));
   });
