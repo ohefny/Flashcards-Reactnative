@@ -12,14 +12,14 @@ const SHOWING_QUIZ = 1;
 const SHOWING_ANSWER = 2;
 const SHOWING_RESULT = 3;
 class DeckPracticeScreen extends Component {
-  resetState=()=>{
+  resetState = () => {
     this.setState({
       deckState: SHOWING_QUIZ,
       correct: 0,
       incorrect: 0,
       cardIndex: 0,
-    })
-  }
+    });
+  };
   onMoveToNextCard = (isCorrect) => {
     const correct = isCorrect ? 1 : 0;
     const incorrect = !isCorrect ? 1 : 0;
@@ -44,12 +44,16 @@ class DeckPracticeScreen extends Component {
     incorrect: 0,
     cardIndex: 0,
   };
-  
+
   renderQuizState = () => {
+    const progress =
+      this.state.cardIndex + 1 + " / "+ this.props.cards.length ;
+
     //todo navigate to QuizResultScreen after finishing
     if (this.state.deckState == SHOWING_QUIZ) {
       return (
         <CardQuestion
+          progress={progress}
           quizText={this.props.cards[this.state.cardIndex].question}
           onShowAnswer={this.onShowAnswerPressed}
         />
@@ -57,6 +61,7 @@ class DeckPracticeScreen extends Component {
     } else if (this.state.deckState == SHOWING_ANSWER) {
       return (
         <CardAnswer
+          progress={progress }
           answerText={this.props.cards[this.state.cardIndex].answer}
           onCorrectPressed={() => this.onMoveToNextCard(true)}
           onInCorrectPressed={() => this.onMoveToNextCard(false)}
@@ -67,7 +72,7 @@ class DeckPracticeScreen extends Component {
         <QuizResultScreen
           correctAnswersCount={this.state.correct}
           incorrectAnswersCount={this.state.incorrect}
-          onRetakePressed={()=>this.resetState()}
+          onRetakePressed={() => this.resetState()}
         />
       );
   };

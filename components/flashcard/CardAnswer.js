@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import appColors from "../../colors";
 import Button from "../Button";
-export default function CardAnswer({ onCorrectPressed, onInCorrectPressed, answerText }) {
+export default function CardAnswer({ onCorrectPressed, onInCorrectPressed, answerText ,progress}) {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -26,6 +26,7 @@ export default function CardAnswer({ onCorrectPressed, onInCorrectPressed, answe
         textStyle={{color:appColors.whiteTextColor}}
         btnStyle={{backgroundColor:appColors.incorrectColor,...styles.actionButton}}
       />
+      <Text>{progress}</Text>
     </View>
   );
 }

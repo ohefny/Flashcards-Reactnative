@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import appColors from "../../colors";
 import Button from "../Button";
-export default function CardQuestion({onShowAnswer,quizText}) {
+export default function CardQuestion({onShowAnswer,quizText,progress}) {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -18,6 +18,7 @@ export default function CardQuestion({onShowAnswer,quizText}) {
         text="Show Answer"
         onPress={onShowAnswer}
       />
+     <Text>{progress}</Text>
     </View>
   );
 }
