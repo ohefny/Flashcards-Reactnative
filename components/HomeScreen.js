@@ -37,6 +37,8 @@ class HomeScreen extends Component {
     insertDeck(deck);
     this.props.dispatch(addDeck(deck));
     this.setState({ showDeckCreationDialog: false });
+    this.props.navigation.navigate("Deck Details", { id:deck.id });
+
   };
   renderLoading() {
     return (

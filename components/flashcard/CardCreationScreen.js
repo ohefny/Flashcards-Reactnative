@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import appColors from "../../colors";
-import {
-  Container,
-  Content,
-  Textarea,
-  Form,
-} from "native-base";
+import { Container, Content, Textarea, Form } from "native-base";
 import Button from "../Button";
 import { connect } from "react-redux";
 import { insertCard } from "../../api";
-import {addCard} from "../../redux/actions/cards"
+import { addCard } from "../../redux/actions/cards";
 class CardCreationScreen extends Component {
+  state = {
+    answerText: "",
+    quizText: "",
+  };
   addCard = () => {
     //todo get text from this.state.quizText , this.state.answerText
     //add card to deck in local storage
@@ -22,8 +21,8 @@ class CardCreationScreen extends Component {
       deckID: this.props.route.params.id,
     };
     insertCard(card);
-    this.props.dispatch(addCard(card))
-    this.props.navigation.goBack()
+    this.props.dispatch(addCard(card));
+    this.props.navigation.goBack();
   };
   render() {
     return (
@@ -48,14 +47,23 @@ class CardCreationScreen extends Component {
               placeholder="Write your answer..."
               style={{ marginBottom: 20 }}
             />
-            <Button text="Submit" onPress={(e)=>this.addCard()} />
+            <Button
+              disabled={
+                isEmpty(this.state.quizText) 
+                || isEmpty(this.state.answerText)
+              }
+              text="Submit"
+              onPress={(e) => this.addCard()}
+            />
           </Form>
         </Content>
       </Container>
     );
   }
 }
-
+function isEmpty(str) {
+  return !str || 0 === str.length;
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
