@@ -9,9 +9,13 @@ import DeckPracticeScreen from "./components/deck/DeckPracticeScreen";
 import CardCreationScreen from "./components/flashcard/CardCreationScreen";
 import HomeScreen from "./components/HomeScreen";
 import QuizResultScreen from "./components/QuizResultScreen";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./redux/reducers";
+import { applyMiddleware, createStore } from 'redux';
+import logger from 'redux-logger'
+
+// Logger with default options
+import logger from 'redux-logger'
 const defaultNavigationOptions = {
   headerStyle: {
     backgroundColor: appColors.primaryColor,
@@ -30,7 +34,7 @@ export default class App extends Component {
   render() {
     //if decks are empty show empty message
     return (
-      <Provider store={createStore(reducer)}>
+      <Provider store={createStore(reducer,applyMiddleware(logger))}>
         <NavigationContainer>
           <AppStack />
         </NavigationContainer>
