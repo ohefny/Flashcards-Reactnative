@@ -8,6 +8,9 @@ export default class HomeScreen extends Component {
   state={
     showDeckCreationDialog:false
   } 
+  navigateToDeckDetails = (id) => {
+    this.props.navigation.navigate('Deck Details',{results:77})
+  };
   onAddDeck = (text) => {
     //todo add this text as deck to stoarage
     //then show loading
@@ -16,9 +19,10 @@ export default class HomeScreen extends Component {
   };
 
   render() {
+      console.log(this.props.navigation)
     return (
       <View style={styles.container}>
-        <DeckList data={this.getData()} />
+        <DeckList data={this.getData()} onDeckPressed={this.navigateToDeckDetails}/>
         <Button
           text="Add Deck"
           onPress={() => this.setState({ showDeckCreationDialog: true })}

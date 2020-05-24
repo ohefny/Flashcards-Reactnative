@@ -8,7 +8,7 @@ export default class DeckList extends Component {
 
   keyExtractor = (item, index) => item.id;
   onPressItem = (id) => {
-    //todo navigate to DeckPage
+    this.props.onDeckPressed(id)
   };
   renderItem = ({ item }) => (
     <DeckSnippet

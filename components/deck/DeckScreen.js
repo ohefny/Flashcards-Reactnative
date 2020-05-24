@@ -4,6 +4,9 @@ import appColors from "../../colors";
 import Button from "../Button";
 
 export default class DeckScreen extends Component {
+/*   static navigationOptions = ({ navigation }) => ({
+    results: `${navigation.state.params.user.results}`,
+  }); */
   onQuizStarPressed = () => {};
   onAddCardPressed = () => {};
   state = {};
@@ -12,17 +15,15 @@ export default class DeckScreen extends Component {
     const deckInfo = {
       creationDate: "20/2/2020",
       cardsNumber: 3,
-      lastResult: 66,
+      lastResult: this.props.route.params.results,
       numberOfPractices: 2,
     };
     return (
-      <View style={styles.container}>
-        <DeckDetails
-          onQuizStartPressed={this.onQuizStarPressed}
-          onAddCardPressed={this.onAddCardPressed}
-          deckInfo={deckInfo}
-        />
-      </View>
+      <DeckDetails
+        onQuizStartPressed={this.onQuizStarPressed}
+        onAddCardPressed={this.onAddCardPressed}
+        deckInfo={deckInfo}
+      />
     );
   }
 }
@@ -60,7 +61,7 @@ function DeckDetails(props) {
       </View>
     </View>
   );
-} //todo make it stateless and connect it 
+} //todo make it stateless and connect it
 const styles = StyleSheet.create({
   deckInfoContainer: {
     flex: 1,
