@@ -28,11 +28,12 @@ export default function QuizResultScreen(props) {
         <Button
           text="Retake the Quiz"
           onPress={onRetakePressed}
-          btnStyle={{ backgroundColor: appColors.primaryColor }}
+          btnStyle={{ margin:5,backgroundColor: appColors.primaryColor }}
         />
         <Button
           text="Go Back"
           onPress={props.onGoBack}
+          btnStyle={{ margin:5}}
         /> 
       </View>
     </View>
