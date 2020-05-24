@@ -5,7 +5,7 @@ import Button from "../Button";
 import CardQuestion from "../flashcard/CardQuestion";
 import CardAnswer from "../flashcard/CardAnswer";
 import { connect } from "react-redux";
-import { getCardsOfDeck } from "../../utils";
+import { getCardsOfDeck,setLocalNotification,clearLocalNotification } from "../../utils";
 import QuizResultScreen from "../QuizResultScreen";
 
 const SHOWING_QUIZ = 1;
@@ -19,7 +19,11 @@ class DeckPracticeScreen extends Component {
       incorrect: 0,
       cardIndex: 0,
     });
-  };
+  };//499fd //666125
+  componentDidMount(){
+    clearLocalNotification() //if at leas one practice clear current notification
+    setLocalNotification()
+  }
   onMoveToNextCard = (isCorrect) => {
     const correct = isCorrect ? 1 : 0;
     const incorrect = !isCorrect ? 1 : 0;

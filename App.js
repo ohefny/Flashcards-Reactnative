@@ -13,22 +13,15 @@ import { Provider } from "react-redux";
 import reducer from "./redux/reducers";
 import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger'
-
-const defaultNavigationOptions = {
-  headerStyle: {
-    backgroundColor: appColors.primaryColor,
-  },
-  headerTintColor: "#fff",
-  headerTitleStyle: {
-    fontWeight: "bold",
-  },
-};
+import {setLocalNotification} from "./utils"
 const Stack = createStackNavigator();
 export default class App extends Component {
   state = {
     showDeckCreationDialog: false,
   };
-
+  componentDidMount(){
+    setLocalNotification()
+  }
   render() {
     //if decks are empty show empty message
     return (
