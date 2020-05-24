@@ -15,10 +15,10 @@ export default function QuizResultScreen(props) {
       <Text style={styles.titleStyle}>The Quiz Results</Text>
       <View>
       <Text style={styles.detailsStyle}>
-        Correct Answers:{correctAnswersCount}
+        Correct Answers: {correctAnswersCount}
       </Text>
       <Text style={styles.detailsStyle}>
-        Incorrect Answers:{incorrectAnswersCount}
+        Incorrect Answers: {incorrectAnswersCount}
       </Text>
       <Text style={styles.detailsStyle}>
         Total percentage: {totalPercentage}%
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
   detailsStyle: {
-    fontSize: 16,
+    fontSize: 18,
+    marginVertical:10
   },
 });
