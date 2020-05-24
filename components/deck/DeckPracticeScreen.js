@@ -44,11 +44,7 @@ class DeckPracticeScreen extends Component {
     incorrect: 0,
     cardIndex: 0,
   };
-  render() {
-    console.log("state", this.state);
-    //todo show if Last Result number of Practices > 0
-    return <View style={styles.container}>{this.renderQuizState()}</View>;
-  }
+  
   renderQuizState = () => {
     //todo navigate to QuizResultScreen after finishing
     if (this.state.deckState == SHOWING_QUIZ) {
@@ -75,6 +71,11 @@ class DeckPracticeScreen extends Component {
         />
       );
   };
+  render() {
+    console.log("state", this.state);
+    //todo show if Last Result number of Practices > 0
+    return <View style={styles.container}>{this.renderQuizState()}</View>;
+  }
 }
 const styles = StyleSheet.create({
   container: {

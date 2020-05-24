@@ -65,6 +65,7 @@ function DeckDetails(props) {
           btnStyle={{ margin: 5, backgroundColor: appColors.primaryColor }}
         />
         <Button
+          disabled = {cardsNumber===0}
           text="Start Practice"
           onPress={props.onQuizStartPressed}
           btnStyle={{ margin: 5 }}

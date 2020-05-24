@@ -6,10 +6,11 @@ import {
   Platform,
 } from "react-native";
 import appColors from "../colors";
-export default function Button({ btnStyle, txtStyle, text,onPress }) {
+export default function Button({ btnStyle, txtStyle, text,onPress,disabled }) {
 const platformBtnStyle = Platform.OS === "ios" ? styles.iosSubmitBtn : styles.AndroidSubmitBtn
   return(
     <TouchableOpacity
+      disabled={disabled}
       style={[platformBtnStyle,{...btnStyle}]}
       onPress={onPress}
     >
