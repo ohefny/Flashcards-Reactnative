@@ -101,22 +101,6 @@ class HomeScreen extends Component {
       />
     );
   }
-  /* getData() {
-    return [
-      { id: 1, title: "Deck 1", cards: [{}, {}] },
-      { id: 2, title: "Deck 2", cards: [{}, {}] },
-      { id: 3, title: "Deck 3", cards: [{}, {}] },
-      { id: 4, title: "Deck 4", cards: [{}, {}] },
-      { id: 5, title: "Deck 5", cards: [{}, {}] },
-      { id: 6, title: "Deck 6", cards: [{}, {}] },
-      { id: 7, title: "Deck 7", cards: [{}, {}] },
-      { id: 8, title: "Deck 8", cards: [{}, {}] },
-      { id: 9, title: "Deck 9", cards: [{}, {}] },
-      { id: 10, title: "Deck 10", cards: [{}, {}] },
-      { id: 11, title: "Deck 11", cards: [{}, {}] },
-      { id: 12, title: "Deck 12", cards: [{}, {}] },
-    ];
-  } */
 }
 
 const styles = StyleSheet.create({
