@@ -9,6 +9,9 @@ import DeckPracticeScreen from "./components/deck/DeckPracticeScreen";
 import CardCreationScreen from "./components/flashcard/CardCreationScreen";
 import HomeScreen from "./components/HomeScreen";
 import QuizResultScreen from "./components/QuizResultScreen";
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './redux/reducers'
 const defaultNavigationOptions = {
   headerStyle: {
     backgroundColor: appColors.primaryColor

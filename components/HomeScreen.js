@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { connect } from 'react-redux'
 import appColors from "../colors";
 import Button from "./Button";
 import DeckList from "./deck/DeckList";
@@ -9,7 +10,7 @@ export default class HomeScreen extends Component {
     showDeckCreationDialog:false
   } 
   navigateToDeckDetails = (id) => {
-    this.props.navigation.navigate('Deck Details',{results:77})
+    this.props.navigation.navigate('Deck Details',{results:77,id})
   };
   onAddDeck = (text) => {
     //todo add this text as deck to stoarage

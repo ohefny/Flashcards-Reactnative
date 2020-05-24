@@ -7,7 +7,7 @@ export function fetchDecks() {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY);
 }
 
-export function addDeck(deck) {//{id,title}
+export function addDeck(deck) {//{id,title,creationDate,numberOfPractices,lastResult}
   return AsyncStorage.getItem(DECKS_STORAGE_KEY).andThen((decks) => {
     initDecks = decks == null ? {} : decks;
     initDecks[deck.id] = deck;
@@ -33,6 +33,15 @@ export function removeEntry(key) {
     delete data[key];
     AsyncStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(data));
   });
+}
+export function getInitialData () {
+  return Promise.all([
+    fetchDecks(),
+    fetchCards(),
+  ]).then(([decks, cards]) => ({
+    decks,
+    cards,
+  }))
 }
 function objectToArray(obj) {
     return Object.keys(obj).map((key) => obj[key]);

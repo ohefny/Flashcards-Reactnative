@@ -7,8 +7,12 @@ export default class DeckScreen extends Component {
 /*   static navigationOptions = ({ navigation }) => ({
     results: `${navigation.state.params.user.results}`,
   }); */
-  onQuizStarPressed = () => {};
-  onAddCardPressed = () => {};
+  onQuizStarPressed = () => {
+    this.props.navigation.navigate('Deck Practice',{id:this.props.route.params.id})
+  };
+  onAddCardPressed = () => {
+    this.props.navigation.navigate('Card Creation',{id:this.props.route.params.id})
+  };
   state = {};
   render() {
     //todo show if Last Result number of Practices > 0
@@ -55,7 +59,7 @@ function DeckDetails(props) {
         />
         <Button
           text="Start Practice"
-          onPress={props.onQuizStarPressed}
+          onPress={props.onQuizStartPressed}
           btnStyle={{ margin: 5 }}
         />
       </View>

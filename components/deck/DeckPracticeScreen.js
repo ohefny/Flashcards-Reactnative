@@ -35,10 +35,19 @@ export default class DeckPracticeScreen extends Component {
     return <View style={styles.container}>{this.renderQuizState()}</View>;
   }
   renderQuizState = () => {
-    if (this.state.deckState == SHOWING_QUIZ) {
+    //todo navigate to QuizResultScreen after finishing
+    if (this.state.deckState == SHOWING_QUIZ) { 
       return <CardQuestion quizText="ssssssss" />;
     } else {
       return <CardAnswer answerText="sssss" />;
     }
   };
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "space-around",
+  }
+})
