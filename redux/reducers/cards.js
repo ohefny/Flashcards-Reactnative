@@ -1,4 +1,4 @@
-import { RECEIVE_CARDS, ADD_CARD } from from "../actions/cards";
+import { RECEIVE_CARDS, ADD_CARD } from "../actions/cards";
 
 export default function cards(state = {}, action) {
   switch (action.type) {

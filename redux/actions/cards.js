@@ -3,7 +3,7 @@ export const ADD_CARD= 'ADD_CARD'
 
 export function recieveCards(cards){
     return {
-        type: RECEIVE_DECKS,
+        type: RECEIVE_CARDS,
         cards,
       }
 }

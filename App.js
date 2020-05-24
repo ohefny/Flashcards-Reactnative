@@ -9,17 +9,17 @@ import DeckPracticeScreen from "./components/deck/DeckPracticeScreen";
 import CardCreationScreen from "./components/flashcard/CardCreationScreen";
 import HomeScreen from "./components/HomeScreen";
 import QuizResultScreen from "./components/QuizResultScreen";
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import reducer from './redux/reducers'
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import reducer from "./redux/reducers";
 const defaultNavigationOptions = {
   headerStyle: {
-    backgroundColor: appColors.primaryColor
+    backgroundColor: appColors.primaryColor,
   },
   headerTintColor: "#fff",
   headerTitleStyle: {
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 };
 const Stack = createStackNavigator();
 export default class App extends Component {
@@ -30,25 +30,28 @@ export default class App extends Component {
   render() {
     //if decks are empty show empty message
     return (
-      <NavigationContainer>
-     
-        <AppStack />
-      </NavigationContainer>
+      <Provider store={createStore(reducer)}>
+        <NavigationContainer>
+          <AppStack />
+        </NavigationContainer>
+      </Provider>
     );
   }
 }
 function AppStack() {
   return (
-    <Stack.Navigator screenOptions={{
-      headerStyle: {
-        backgroundColor: appColors.primaryColor,
-      },
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: appColors.primaryColor,
+        },
 
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    }}>
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    >
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Deck Details" component={DeckScreen} />
       <Stack.Screen name="Deck Practice" component={DeckPracticeScreen} />
