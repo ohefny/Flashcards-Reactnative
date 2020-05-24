@@ -14,8 +14,6 @@ import reducer from "./redux/reducers";
 import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger'
 
-// Logger with default options
-import logger from 'redux-logger'
 const defaultNavigationOptions = {
   headerStyle: {
     backgroundColor: appColors.primaryColor,
