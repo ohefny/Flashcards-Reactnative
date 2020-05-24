@@ -6,9 +6,6 @@ import {
   Content,
   Textarea,
   Form,
-  Item,
-  Label,
-  Input,
 } from "native-base";
 import Button from "../Button";
 import { connect } from "react-redux";
