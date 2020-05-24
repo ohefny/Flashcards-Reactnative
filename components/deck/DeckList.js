@@ -14,7 +14,7 @@ export default class DeckList extends Component {
     <DeckSnippet
       id={item.id}
       title={item.title}
-      cardsCount={item.cards.length} //todo find all cards in that deck
+      cardsCount={item.cardsCount} //todo find all cards in that deck
       onPressItem={this.onPressItem}
     />
   );

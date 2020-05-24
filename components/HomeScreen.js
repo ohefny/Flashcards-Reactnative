@@ -7,7 +7,10 @@ import Button from "./Button";
 import DeckList from "./deck/DeckList";
 import DialogInput from "react-native-dialog-input";
 import { handleInitialData } from "../redux/actions/shared";
-import { getSnippetDecksArray } from "../utils";
+import { getSnippetDecksArray, timeConverter } from "../utils";
+import { insertDeck } from "../api";
+import { addDeck } from "../redux/actions/decks";
+
 class HomeScreen extends Component {
   state = {
     initialDataRequested: false,
@@ -23,9 +26,16 @@ class HomeScreen extends Component {
     this.props.navigation.navigate("Deck Details", { results: 77, id });
   };
   onAddDeck = (text) => {
-    //todo add this text as deck to stoarage
+    //todo add this text as deck to storage
     //then show loading
     //then add to state and dismiss dialog
+    const deck = {
+      id: Date.now().toString(),
+      title: text,
+      creationDate: timeConverter(Date.now()),
+    };
+    insertDeck(deck);
+    this.props.dispatch(addDeck(deck));
     this.setState({ showDeckCreationDialog: false });
   };
   renderLoading() {
@@ -39,8 +49,16 @@ class HomeScreen extends Component {
   }
   renderEmptyView() {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "stretch" }}>
-        <Text style={{ color: appColors.primaryTextColor,alignSelf:"center", fontSize: 25 }}>
+      <View
+        style={{ flex: 1, justifyContent: "center", alignItems: "stretch" }}
+      >
+        <Text
+          style={{
+            color: appColors.primaryTextColor,
+            alignSelf: "center",
+            fontSize: 25,
+          }}
+        >
           You didn't create any decks!
         </Text>
       </View>
@@ -55,7 +73,7 @@ class HomeScreen extends Component {
           this.renderEmptyView()
         ) : (
           <DeckList
-            data={this.getData()}
+            data={this.props.snippets}
             onDeckPressed={this.navigateToDeckDetails}
           />
         )}
@@ -83,7 +101,7 @@ class HomeScreen extends Component {
       />
     );
   }
-  getData() {
+  /* getData() {
     return [
       { id: 1, title: "Deck 1", cards: [{}, {}] },
       { id: 2, title: "Deck 2", cards: [{}, {}] },
@@ -98,7 +116,7 @@ class HomeScreen extends Component {
       { id: 11, title: "Deck 11", cards: [{}, {}] },
       { id: 12, title: "Deck 12", cards: [{}, {}] },
     ];
-  }
+  } */
 }
 
 const styles = StyleSheet.create({
@@ -110,9 +128,9 @@ const styles = StyleSheet.create({
   },
 });
 function mapStateToProps(state) {
-  const { decks, loading } = state;
+  const { decks, loading,cards } = state;
   console.log(state);
-  return { snippets: getSnippetDecksArray(decks), loading };
+  return { snippets: getSnippetDecksArray(decks,cards), loading };
 }
 
 export default connect(mapStateToProps)(HomeScreen);
