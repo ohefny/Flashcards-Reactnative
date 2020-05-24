@@ -22,7 +22,6 @@ export default class DeckList extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>DeckList</Text>
         <FlatList
           data={this.props.data}
           extraData={this.state}

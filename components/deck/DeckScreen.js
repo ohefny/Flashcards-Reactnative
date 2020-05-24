@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import appColors from "../../colors";
 import Button from "../Button";
 
-export default class DeckPage extends Component {
+export default class DeckScreen extends Component {
   onQuizStarPressed = () => {};
   onAddCardPressed = () => {};
   state = {};

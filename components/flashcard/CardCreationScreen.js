@@ -4,7 +4,7 @@ import appColors from "../../colors";
 import { Container, Content, Textarea, Form, Item, Label, Input } from "native-base";
 import Button from "../Button";
 
-export default class CardCreation extends Component {
+export default class CardCreationScreen extends Component {
   addCard = () => {
     //todo get text from this.state.quizText , this.state.answerText 
     //add card to deck in local storage

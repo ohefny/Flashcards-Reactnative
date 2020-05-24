@@ -4,7 +4,7 @@ import appColors from "../colors";
 import { Container, Content, Input, Form, Item, Label } from "native-base";
 import Button from "./Button";
 
-export default function QuizResult(props) {
+export default function QuizResultScreen(props) {
   const { correctAnswersCount, incorrectAnswersCount } = props;
   const totalPercentage = (
     (correctAnswersCount / (correctAnswersCount + incorrectAnswersCount)) *

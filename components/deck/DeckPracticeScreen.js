@@ -5,9 +5,9 @@ import Button from "../Button";
 import CardQuestion from "../flashcard/CardQuestion";
 import CardAnswer from "../flashcard/CardAnswer";
 const SHOWING_QUIZ = 1;
-const SHOWING_ANSWER = 2;
+const SHOWING_ANSWER = 2; 
 
-export default class DeckPage extends Component {
+export default class DeckPracticeScreen extends Component {
   onCorrectPressed = () => {
     //todo add result to stats on storage / load next quiz from storage
     this.setState({
