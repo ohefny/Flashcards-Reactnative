@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import appColors from "../../colors";
 import Button from "../Button";
-export default function CardAnswer({ onCorrect, onInCorrect, answerText }) {
+export default function CardAnswer({ onCorrectPressed, onInCorrectPressed, answerText }) {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -16,13 +16,13 @@ export default function CardAnswer({ onCorrect, onInCorrect, answerText }) {
       </View>
       <Button style={styles.actionButton}
         text="Correct"
-        onPress={onCorrect}
+        onPress={onCorrectPressed}
         textStyle={{color:appColors.whiteTextColor}}
         btnStyle={{backgroundColor:appColors.correctColor,...styles.actionButton}}
       />
       <Button style={styles.actionButton}
         text="InCorrect"
-        onPress={onInCorrect}
+        onPress={onInCorrectPressed}
         textStyle={{color:appColors.whiteTextColor}}
         btnStyle={{backgroundColor:appColors.incorrectColor,...styles.actionButton}}
       />

@@ -5,7 +5,7 @@ import { Container, Content, Input, Form, Item, Label } from "native-base";
 import Button from "./Button";
 
 export default function QuizResultScreen(props) {
-  const { correctAnswersCount, incorrectAnswersCount } = props;
+  const { correctAnswersCount, incorrectAnswersCount,onRetakePressed } = props;
   const totalPercentage = (
     (correctAnswersCount / (correctAnswersCount + incorrectAnswersCount)) *
     100
@@ -18,7 +18,7 @@ export default function QuizResultScreen(props) {
         Correct Answers:{correctAnswersCount}
       </Text>
       <Text style={styles.detailsStyle}>
-        InCorrect Answers:{incorrectAnswersCount}
+        Incorrect Answers:{incorrectAnswersCount}
       </Text>
       <Text style={styles.detailsStyle}>
         Total percentage: {totalPercentage}%
@@ -27,14 +27,14 @@ export default function QuizResultScreen(props) {
       <View style={{ flexDirection: "row", alignContent: "space-around" }}>
         <Button
           text="Retake the Quiz"
-          onPress={props.onRetakeQuiz}
+          onPress={onRetakePressed}
           btnStyle={{ margin: 5, backgroundColor: appColors.primaryColor }}
         />
-        <Button
+       {/*  <Button
           text="Go Home"
           onPress={props.onGoHome}
           btnStyle={{ margin: 5 }}
-        />
+        /> */}
       </View>
     </View>
   );

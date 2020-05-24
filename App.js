@@ -57,7 +57,6 @@ function AppStack() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Deck Details" component={DeckScreen} />
       <Stack.Screen name="Deck Practice" component={DeckPracticeScreen} />
-      <Stack.Screen name="Quiz Result" component={QuizResultScreen} />
       <Stack.Screen name="Card Creation" component={CardCreationScreen} />
     </Stack.Navigator>
   );
