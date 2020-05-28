@@ -4,6 +4,10 @@
 
 It uses React Native, Expo, Redux, & React Navigation & Native Base.
 
+# Screenshots
+![Image of Home](/screenshots/android/2.png)
+ <img href="/screenshots/android/1.png">
+
 ## Installation
 
 1-Clone the repository
@@ -37,3 +41,4 @@ This project has been tested on the following platforms:
 
 - iOS 12 [iPhone 8 Simulator]
 - Android 6.0.1. [Lenovoe K53a48]
+- Android 9 [ Pixel 2 Emulator ]
