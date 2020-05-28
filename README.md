@@ -6,7 +6,7 @@ It uses React Native, Expo, Redux, & React Navigation & Native Base.
 
 # Screenshots
 ![Image of Home](/screenshots/android/2.png)
- <img src="/screenshots/android/1.png">
+ <img src="/screenshots/android/1.png" width="200" heigh="600">
 
 ## Installation
 
