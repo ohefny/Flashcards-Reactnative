@@ -1,53 +1,51 @@
 import React, { Component } from "react";
 import {
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
   Platform,
 } from "react-native";
 import appColors from "../../colors";
 import Button from "../Button";
-export default function CardQuestion({onShowAnswer,quizText,progress}) {
+import {
+  Container,
+  Header,
+  Content,
+  Card,
+  CardItem,
+  Body,
+  Text,
+} from "native-base";
+export default function CardQuestion({ onShowAnswer, quizText, progress }) {
   return (
-    <View style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.cardText}>{quizText}</Text>
-      </View>
-      <Button
-        text="Show Answer"
-        onPress={onShowAnswer}
-      />
-     <Text>{progress}</Text>
-    </View>
+      <Container >
+        <Content contentContainerStyle={styles.container}>
+          <Card style={{marginBottom:50,width:300}}>
+            <CardItem style={{minHeight:100,alignItems:"stretch"}} button onPress={onShowAnswer} >
+              <Body>
+                  <Text style={styles.cardText}>{quizText}</Text>
+              </Body>
+            </CardItem>
+          </Card>
+          <Button text="Show Answer" onPress={onShowAnswer} />
+          <Text>{progress}</Text>
+        </Content>
+      </Container>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: appColors.backgroundColor,
     alignItems: "center",
-    justifyContent: "center",
-  },
+    justifyContent: "center"
+    },
   showAnswerButton: {
     backgroundColor: appColors.accentColor,
     color: appColors.whiteTextColor,
   },
-  card: {
-    backgroundColor: appColors.primaryColor,
-    borderColor: appColors.darkPrimaryColor,
-    borderRadius: 8,
-    borderWidth: 2,
-    shadowColor: appColors.lightPrimaryColor,
-    minHeight: 100,
-    width: 300,
-    padding: 20,
-    margin: 30,
-    alignContent: "center",
-  },
   cardText: {
-    color: appColors.whiteTextColor,
+    color: appColors.primaryTextColor,
     fontSize: 16,
   },
 });

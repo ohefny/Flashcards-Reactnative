@@ -27,8 +27,8 @@ class DeckPracticeScreen extends Component {
     });
   };//499fd //666125
   componentDidMount(){
-    clearLocalNotification() //if at leas one practice clear current notification
-    setLocalNotification()
+    //clearLocalNotification() //if at leas one practice clear current notification
+    //setLocalNotification()
   }
   onMoveToNextCard = (isCorrect) => {
     const correct = isCorrect ? 1 : 0;
